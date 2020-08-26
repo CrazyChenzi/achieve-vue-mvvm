@@ -1,0 +1,18 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ES2020",
+    "outDir": "./dist/",
+    "declaration": false,
+    "baseUrl": "./",
+    "lib": [
+      "DOM",
+      "ES2015"
+    ]
+  },
+  "exclude": [
+    "node_modules",
+    "demo"
+  ]
+}

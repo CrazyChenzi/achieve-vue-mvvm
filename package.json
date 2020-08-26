@@ -1,0 +1,25 @@
+{
+  "name": "achieve-vue-mvvm",
+  "version": "1.0.0",
+  "description": "实现一个vue mvvm",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc && node tojs.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blacklisten/achieve-vue-mvvm.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blacklisten/achieve-vue-mvvm/issues"
+  },
+  "homepage": "https://github.com/blacklisten/achieve-vue-mvvm#readme",
+  "devDependencies": {
+    "filehound": "^1.17.4",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.2"
+  }
+}
