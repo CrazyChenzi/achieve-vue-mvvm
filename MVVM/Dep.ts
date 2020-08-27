@@ -1,8 +1,8 @@
-let uid = 0
+let uid = 0 // 生成唯一uid时使用
 
 class Dep {
   private id = uid++  // 用来识别Dep实例
-  private subs = []
+  private subs = [] // 用来存储已经生产的Dep实例
   static target: any
   constructor() {
   }
@@ -26,6 +26,7 @@ class Dep {
   }
 }
 
+// 当需要获取订阅属性的值时，绑定watcher实例，其它时间为null
 Dep.target = null
 
 export default Dep

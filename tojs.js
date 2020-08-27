@@ -1,5 +1,6 @@
 "use strict";
 
+// https://github.com/microsoft/TypeScript/issues/16577
 const FileHound = require('filehound');
 const fs = require('fs');
 const path = require('path');

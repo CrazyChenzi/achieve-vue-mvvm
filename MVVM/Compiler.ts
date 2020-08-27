@@ -1,9 +1,9 @@
 import Watcher from './Watcher'
 
-const isElementNode = (node: string | Element) => (node as Element).nodeType === 1
-const isTextNode = (node: Element) => node.nodeType === 3
-const isDirective = (attr: string) => attr.indexOf('v-') === 0
-const isEventDirective = (directive: string) => directive.indexOf('on') === 0
+const isElementNode = (node: string | Element) => (node as Element).nodeType === 1  // 一个元素节点
+const isTextNode = (node: Element) => node.nodeType === 3 // 	Element 或者 Attr 中实际的  文字
+const isDirective = (attr: string) => attr.indexOf('v-') === 0  // 指令
+const isEventDirective = (directive: string) => directive.indexOf('on') === 0 // 事件
 
 function nodeToFragment(node: Element) {
   const fragment = document.createDocumentFragment()
@@ -89,17 +89,17 @@ const compilerUtils = {
     }
   },
 
-  _getVMVal(vm: any, exp: string) {
+  _getVMVal(vm: any, exp: string | string[]) {
     let val = vm
-    let exps = exp.split('.')
-    exps.forEach(key => (val = val[key]))
+    exp = (exp as string).split('.')
+    exp.forEach(key => (val = val[key]))
     return val
   },
 
-  _setVMVal(vm: any, exp: string, value: any) {
+  _setVMVal(vm: any, exp: string | string[], value: any) {
     let val = vm
-    let exps = exp.split('.')
-    exps.forEach((key, index) => {
+    exp = (exp as string).split('.')
+    exp.forEach((key, index) => {
       // 非最后一个key，更新val的值
       if (index < exp.length - 1) {
         val = val[key]
@@ -126,7 +126,7 @@ class Compiler {
     }
   }
 
-  compileElement(el: DocumentFragment | ChildNode) {
+  private compileElement(el: DocumentFragment | ChildNode) {
     Array.from(el.childNodes).forEach((node: Element) => {
       const text = node.textContent
       const reg = /\{\{(.*)\}\}/
@@ -143,7 +143,7 @@ class Compiler {
     })
   }
 
-  compile(node: Element) {
+  private compile(node: Element) {
     Array.from(node.attributes).forEach(attr => {
       const attrName = attr.name
       if (isDirective(attrName)) {
@@ -162,7 +162,7 @@ class Compiler {
     })
   }
 
-  compileText(node: Element, exp: string) {
+  private compileText(node: Element, exp: string) {
     compilerUtils.text(node, this.$vm, exp)
   }
 }

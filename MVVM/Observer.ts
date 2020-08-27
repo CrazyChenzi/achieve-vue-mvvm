@@ -1,7 +1,7 @@
 import Dep from './Dep'
 
 class Observer {
-  private data: any
+  private data: any // 需要代理的data项
   constructor(data: any) {
     this.data = data
     this.defineReactive(data)
